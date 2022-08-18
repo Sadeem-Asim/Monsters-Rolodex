@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { SearchBox } from "./components/search-box/search.component";
 import { CardList } from "./components/card-list/card-list.component";
+// import MetaCard from "./components/meta-card/metaCard.component";
 
 class App extends Component {
   constructor() {
@@ -23,11 +24,22 @@ class App extends Component {
 
   render() {
     const { monsters, searchField } = this.state;
-    const filteredMonsters = monsters.filter((monster) =>
-      monster.name.includes(searchField.toLowerCase())
-    );
+    // filter function
+    // const filteredMonsters = monsters.filter((monster) =>
+    //   monster.name.includes(searchField.toLowerCase())
+    // );
+    // => using foreach function
+    const filteredMonsters = [];
+    monsters.forEach((monster) => {
+      if (monster.name.toLowerCase().includes(searchField.toLowerCase())) {
+        filteredMonsters.push(monster);
+      }
+    });
+
     return (
       <div className="app">
+        {/* <h1>Meta Mask </h1> */}
+        {/* <MetaCard /> */}
         <h1> Monsters Rolodex</h1>
         <SearchBox
           placeholder="Search Monster"
